@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ساعة الزوال</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .clock-section {
+      display: flex;
+      gap: 50px;
+      margin-bottom: 30px;
+    }
+
+    .clock-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .clock-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .digital-display {
+      text-align: center;
+    }
+
+    #current-date {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock-section">
+    <!-- الساعة العادية -->
+    <div class="clock-container">
+      <div class="clock-title">⏰ الساعة العادية</div>
+      <div id="normal-clock-container"></div>
+    </div>
+
+    <!-- ساعة الزوال -->
+    <div class="clock-container">
+      <div class="clock-title">🌅 ساعة الزوال</div>
+      <div id="solar-clock-container"></div>
+    </div>
+  </div>
+
+  <!-- عرض التاريخ -->
+  <div id="current-date"></div>
+
+  <!-- تضمين prayerTimes.js أولاً -->
+  <script src="prayerTimes.js"></script>
+  <!-- ثم clock.js -->
+  <script src="clock.js"></script>
+
+  <script>
+    // عرض التاريخ الحالي بصيغة dd-mm-yyyy
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    document.getElementById('current-date').textContent = `${day}-${month}-${year}`;
+  </script>
+
+</body>
+</html>
